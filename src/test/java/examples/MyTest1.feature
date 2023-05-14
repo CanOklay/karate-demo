@@ -17,8 +17,14 @@ Feature:
     When method get
     Then status 200
 
-    @name=second
-    Scenario: add two parameters
-      Given path 'add'
-      When method post
-      Then status 200
+  @name=second
+  Scenario: add two parameters
+    Given path 'add'
+    When method post
+    Then status 200
+
+  @name=third
+  Scenario: add two parameters
+    Given path 'add'
+    When method post
+    Then status 200
