@@ -14,8 +14,13 @@ Feature: Test Demo
     Given path 'users', first.id
     When method get
     Then status 200
+    And match response.name == "Leanne Graham"
+    And match response == id: '#notnull'
+    And match response.email == '#notnull'
+    And match response.username == "Bret"
+    And match response.name !contains 'can'
 
-  @name=second
+  @smoke
   Scenario: create a user and then get it by id
 
     * def user =
@@ -41,26 +46,18 @@ Feature: Test Demo
     * def id = response.id
     * print 'created id is: ' + id
 
-  Scenario: Testing valid GET endpoint1
-    Given url 'https://www.testrelic.com/'
-    When method GET
-    Then status 200
-    And match response.name contains "Luke Skywalker"
-    And match response == { name: 'Billie' }
-    And match response.name == "Billie"
-    And match response == { id: '#notnull', name: 'Billie' }
-    Then match response/cat/name == 'Billie'
-    Then match /cat/name == 'Billie'
-    Then assert responseStatus == 200 || responseStatus == 204
-    #https://github.com/karatelabs/karate#response
+  Scenario: get all posts
 
-  Scenario: Testing valid GET endpoint2
-    Given url 'https://www.testrelic.com/'
-    And request { name: 'Billie'}
-    When method post
-    Then status 201
-    And match response == { id: '#notnull', name: 'Billie' }
-
-    Given path response.id
+    Given path 'posts'
     When method get
     Then status 200
+
+  Scenario: get second page
+
+    Given param page = 2
+    Given url 'https://reqres.in/api'
+    Given path 'users'
+    When method get
+    Then status 200
+    And match response.total == 12
+    And match response.total_pages == 2

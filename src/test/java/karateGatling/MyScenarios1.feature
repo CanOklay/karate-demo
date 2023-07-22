@@ -1,24 +1,19 @@
 Feature: Test Demo
 
   Background:
-    * url 'https://www.testrelic.com/'
+    * url 'https://jsonplaceholder.typicode.com'
 
-  Scenario: Get Home Page
-    Given path '/'
+  Scenario: Get users
+    Given path 'users'
     When method get
     Then status 200
 
-  Scenario: Get Help Center
-    Given path 'f-a-q'
-    When method get
-    Then status 200
+    * def first = response[0]
 
-  Scenario: Get Blog Page
-    Given path 'blog'
+    Given path 'users', first.id
     When method get
     Then status 200
-
-  Scenario: Get Projects Page
-    Given path 'projects'
-    When method get
-    Then status 200
+    And match response.name == "Leanne Graham"
+    And match response == id: '#notnull'
+    And match response.email == '#notnull'
+    And match response.username == "Bret"
