@@ -3,7 +3,7 @@ Feature: Test Demo
   Background:
     * url 'https://jsonplaceholder.typicode.com'
 
-  @name=first
+  @smoke
   Scenario: get all users and then get the first user by id
     Given path 'users'
     When method get
@@ -53,12 +53,14 @@ Feature: Test Demo
     When method delete
     Then status 200
 
+  @smoke
   Scenario: get all posts
 
     Given path 'posts'
     When method get
     Then status 200
 
+  @smoke
   Scenario: get second page
 
     Given param page = 2

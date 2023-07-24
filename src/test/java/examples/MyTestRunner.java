@@ -17,7 +17,7 @@ class MyTestRunner {
 
     @Karate.Test
     Karate testTags() {
-        return Karate.run("MyTest").tags("@second").relativeTo(getClass());
+        return Karate.run("MyTest").tags("@smoke").relativeTo(getClass());
     }
 
     @Karate.Test
@@ -28,7 +28,7 @@ class MyTestRunner {
     @Karate.Test
     Karate testSystemProperty() {
         return Karate.run("classpath:examples/MyTest.feature")
-                .tags("@second")
+                .tags("@smoke")
                 .karateEnv("test")
                 .systemProperty("foo", "bar");
     }
