@@ -68,3 +68,8 @@ Feature: Test Demo
     Then status 200
     And match response.total == 12
     And match response.total_pages == 2
+    And match response.data[0].id == 7
+    And match response.data[0].first_name == "Michael"
+    And match response.data[0].email == '#notnull'
+    And match response.data[0].email contains '@'
+    And match response.data[0].last_name == '#notnull'
