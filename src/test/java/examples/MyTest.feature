@@ -32,7 +32,7 @@ Feature: Test Demo
     "address": {
       "street": "Has No Name",
       "suite": "Apt. 123",
-      "city": "Electri",
+      "city": "Electric",
       "zipcode": "54321-6789"
     }
 }
@@ -45,6 +45,13 @@ Feature: Test Demo
 
     * def id = response.id
     * print 'created id is: ' + id
+
+    And match response.name == 'Test User'
+    And match response.address.street == 'Has No Name'
+
+    Given path 'users' + id
+    When method delete
+    Then status 200
 
   Scenario: get all posts
 
