@@ -61,6 +61,22 @@ Feature: Test Demo
     Then status 200
 
   @smoke
+  Scenario: get first post and apply schema validation
+
+    Given path 'posts'
+    When method get
+    Then status 200
+    And match each response ==
+    """
+        {
+            "userId": '#number',
+            "id": '#number',
+            "title": "#string",
+            "body": "#string"
+        }
+    """
+
+  @smoke
   Scenario: get second page
 
     Given param page = 2
