@@ -1,4 +1,4 @@
-package feature;
+package app.feature;
 
 
 import com.intuit.karate.junit5.Karate;
@@ -22,12 +22,12 @@ class MyTestRunner {
 
     @Karate.Test
     Karate testFullPath() {
-        return Karate.run("classpath:examples/MyTest.feature").tags("@first");
+        return Karate.run("classpath:examples/MyTest.app.feature").tags("@first");
     }
 
     @Karate.Test
     Karate testSystemProperty() {
-        return Karate.run("classpath:examples/MyTest.feature")
+        return Karate.run("classpath:examples/MyTest.app.feature")
                 .tags("@smoke")
                 .karateEnv("test")
                 .systemProperty("foo", "bar");

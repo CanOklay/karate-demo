@@ -10,8 +10,8 @@ import scala.language.postfixOps
 
 class TestSimulation extends Simulation {
 
-  val getAllScenarios: ScenarioBuilder = scenario("All Cases").exec(karateFeature("classpath:karateGatling/MyScenarios1.feature"))
-  val getTaggedScenarios: ScenarioBuilder = scenario("Cases with Tag").exec(karateFeature("classpath:karateGatling/MyScenarios2.feature@name=performance"))
+  val getAllScenarios: ScenarioBuilder = scenario("All Cases").exec(karateFeature("classpath:karateGatling/MyScenarios1.app.feature"))
+  val getTaggedScenarios: ScenarioBuilder = scenario("Cases with Tag").exec(karateFeature("classpath:karateGatling/MyScenarios2.app.feature@name=performance"))
 
   val protocol: KarateProtocol = karateProtocol(
     "/karateGatling" -> pauseFor("get" -> 0, "post" -> 0)

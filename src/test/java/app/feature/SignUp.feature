@@ -22,6 +22,7 @@ Feature: Sign up new user
       When method post
       Then status 200
 
+  @parallel=false
   Scenario Outline: Validate sign up error messages
 
     * def randomEmail = dataGenerator.getRandomEmail()
